@@ -57,6 +57,12 @@ fun AddBookView(
                 label = { Text("Pages") },
                 modifier = Modifier.fillMaxWidth()
             )
+            OutlinedTextField(
+                value = uiState.imageUrl,
+                onValueChange = { viewModel.onAction(AddBookUiAction.OnImageUrlChange(it)) },
+                label = { Text("Image URL") },
+                modifier = Modifier.fillMaxWidth()
+            )
             
             Spacer(modifier = Modifier.height(16.dp))
             

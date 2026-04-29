@@ -11,11 +11,36 @@ import javax.inject.Inject
 class BookRepositoryImpl @Inject constructor() : BookRepository {
 
     private val _booksList = mutableListOf(
-        Book(isbn = "11111", title = "Clean Code", nbPages = 10),
-        Book(isbn = "22222", title = "The Pragmatic Programmer", nbPages = 0),
-        Book(isbn = "33333", title = "Design Patterns", nbPages = 0),
-        Book(isbn = "44444", title = "Refactoring", nbPages = 0),
-        Book(isbn = "55555", title = "Head First Design Patterns", nbPages = 0)
+        Book(
+            isbn = "11111",
+            title = "Clean Code",
+            nbPages = 10,
+            imageUrl = "https://m.media-amazon.com/images/I/41xShlnTZTL._SX376_BO1,204,203,200_.jpg"
+        ),
+        Book(
+            isbn = "22222",
+            title = "The Pragmatic Programmer",
+            nbPages = 0,
+            imageUrl = "https://m.media-amazon.com/images/I/41as+4EBUtL._SX395_BO1,204,203,200_.jpg"
+        ),
+        Book(
+            isbn = "33333",
+            title = "Design Patterns",
+            nbPages = 0,
+            imageUrl = "https://m.media-amazon.com/images/I/51szD9HC9pL._SX395_BO1,204,203,200_.jpg"
+        ),
+        Book(
+            isbn = "44444",
+            title = "Refactoring",
+            nbPages = 0,
+            imageUrl = "https://m.media-amazon.com/images/I/41TTHv0uS8L._SX396_BO1,204,203,200_.jpg"
+        ),
+        Book(
+            isbn = "55555",
+            title = "Head First Design Patterns",
+            nbPages = 0,
+            imageUrl = "https://m.media-amazon.com/images/I/51p6y-u17SL._SX430_BO1,204,203,200_.jpg"
+        )
     )
 
     private val booksFlow = MutableSharedFlow<List<Book>>(replay = 1).apply {
