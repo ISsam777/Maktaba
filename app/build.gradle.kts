@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.plugin)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -46,13 +47,25 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
     
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    // Coil
     implementation(libs.coil.compose)
-    implementation(libs.androidx.compose.material.icons.extended)
+
+    // Supabase
+    implementation(platform(libs.supabase.bom))
+    implementation(libs.supabase.postgrest)
+    implementation(libs.supabase.storage)
+    implementation(libs.ktor.client.android)
+    implementation(libs.kotlinx.serialization.json)
+
+    // DataStore
+    implementation(libs.androidx.datastore.preferences)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -1,6 +1,9 @@
 package com.ElOuedUniv.maktaba.presentation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -10,14 +13,20 @@ import com.ElOuedUniv.maktaba.presentation.book.add.AddBookView
 import com.ElOuedUniv.maktaba.presentation.book.detail.BookDetailView
 import com.ElOuedUniv.maktaba.presentation.category.CategoryListView
 import com.ElOuedUniv.maktaba.presentation.onboarding.OnboardingView
+import com.ElOuedUniv.maktaba.presentation.MainViewModel
 
 @Composable
 fun NavGraph(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
+    mainViewModel: MainViewModel = hiltViewModel()
 ) {
+    val startDestination by mainViewModel.startDestination.collectAsState()
+
+    if (startDestination == null) return // Or show a splash screen
+
     NavHost(
         navController = navController,
-        startDestination = Screen.Onboarding.route
+        startDestination = startDestination!!
     ) {
         composable(Screen.Onboarding.route) {
             OnboardingView(
